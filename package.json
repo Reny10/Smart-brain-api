@@ -23,7 +23,6 @@
   },
   
   "devDependencies": {
-    "nodemon": "^1.12.7",
     "cross-env": "^7.0.2"
   },
   "description": ""
