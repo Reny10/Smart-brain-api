@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "script.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start":"node"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +20,6 @@
     "knex": "^0.21.0",
     "pg": "^7.18.2"
   },
-  "description": ""
+  
+    "description": ""
 }
