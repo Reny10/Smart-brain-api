@@ -21,11 +21,14 @@
     "knex": "^0.21.0",
     "pg": "^7.18.2"
   },
-  "description": ""
-},
+  
   "devDependencies": {
-    "cross-env": "^7.0.2",
-    "nodemon": "^1.12.7"
-  }
+    "nodemon": "^1.12.7",
+    "cross-env": "^7.0.2"
+  },
+  "description": ""
+}
+    
+
 
  
