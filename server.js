@@ -14,14 +14,10 @@ const api = new Clarifai.App({
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
-    user : 'postgres',
-    password : 'sladoled',
-    database : 'smart-brain'
-      }
+    connectionString: process.env.DATABASE_URL,
+    ssl:true
+  }
 });
-
-
 
 db.select('*').from('users').then(data=>{
   console.log(data);
