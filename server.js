@@ -4,14 +4,24 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex')
+const Clarifai = require('clarifai');
+
+const api = new Clarifai.App({
+  //apiKey: process.env.API_CLARIFAI
+  apiKey: '94f519df9d48462a9d928e468aa08a4e'
+});
 
 const db = knex({
   client: 'pg',
   connection: {
-    connectionString : process.env.DATABASE_URL,
-    ssl:true
-  }
+    host : '127.0.0.1',
+    user : 'postgres',
+    password : 'sladoled',
+    database : 'smart-brain'
+      }
 });
+
+
 
 db.select('*').from('users').then(data=>{
   console.log(data);
@@ -96,6 +106,13 @@ app.put('/image', (req, res) => {
     res.json(entries[0]);
   })
   .catch(err => res.status(400).json('unable to get entries'))
+})
+app.post('/imageurl', (req, res) => {
+  api.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+  .then(data => {
+    res.json(data);
+  })
+  .catch(err => res.status(400).json('Unable to work with API'))
 })
 
 app.listen(process.env.PORT || 3000, () => {
